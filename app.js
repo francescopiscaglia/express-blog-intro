@@ -1,9 +1,6 @@
 /*
 
-Esercizio
-
-
-Testare nel browser.
+Create una pagina statica html da cui far partire una chiamata ajax per consumare il vostro enpoint json.
 
 */
 
@@ -32,3 +29,13 @@ app.get("/", (req, res) => {
 // Creiamo poi una rotta /posts che restituisca un oggetto json con la lista dei post e il conteggio, partendo da un array locale.
 // La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
 app.get("/posts", postsController);
+
+
+// Creare una nuova rotta con cui stampare la lista in html come ul
+app.get("/gallery", (req, res) => {
+
+    const markup = `<li>post</li>`;
+
+    res.type("html")
+        .send(markup);
+});
