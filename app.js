@@ -1,20 +1,16 @@
-/*
-
-Create una pagina statica html da cui far partire una chiamata ajax per consumare il vostro enpoint json.
-
-*/
-
 // importazione
 const postsController = require("./controllers/postsController.js");
+// const markup = require("./public/js/main.js")
 
 // Creiamo il progetto base con una rotta / che ritorna un h1 con scritto Benvenuto nel mio blog!
 const express = require("express");
+const path = require("path");
 const app = express();
 const host = "http://127.0.0.1";
 const port = 3001;
 
 // Configuriamo gli asset statici sull’applicazione in modo che si possano visualizzare le immagini associate ad ogni post.
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // start the server
 app.listen(port, () => {
@@ -33,9 +29,5 @@ app.get("/posts", postsController);
 
 // Creare una nuova rotta con cui stampare la lista in html come ul
 app.get("/gallery", (req, res) => {
-
-    const markup = `<li>post</li>`;
-
-    res.type("html")
-        .send(markup);
+    res.sendFile(path.join(__dirname,"public", "html", "list.html"))
 });

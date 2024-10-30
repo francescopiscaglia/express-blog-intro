@@ -1,30 +1,42 @@
 // seleziono gli elementi dalla DOM
-const ulEl = document.querySelector(".container > ul");
+const ulEl = document.querySelector(".gallery ");
+
+let gallery = "";
 
 fetch("http://127.0.0.1:3001/posts")
     .then(response => response.json())
     .then(data => {
-        
+
         // mi salvo l'array di posts
         const posts = data.data;
 
-        let gallery = "";
 
         // ciclo dentro l'array
         posts.forEach(post => {
 
             // destrotturo per poter accedere ad ogni chiave
             const { title, img, content, tags } = post;
-        
+
             // mi creo il markup
             const markup = `
-                <li>
-                    <img src="${img}" alt="">
-                    <h3>${title}</h3>
-                    <p>${content}</p>
-                    <a href="#">${tags}</a>
-                </li>
-            `;
+                    <!-- card -->
+                    <div class="card col-4">
+    
+                        <!-- card img -->
+                        <img src="${img}" class="card-img-top" alt="">
+    
+                        <!-- card body -->
+                        <div class="card-body">
+                            <h5 class="card-title">${title}</h5>
+                            <p class="card-text">${content}</p>
+                        </div>
+    
+                        <!-- tags -->
+                        <div class="card-body">
+                            <a href="#" class="card-link">${tags}</a>
+                        </div>
+                    </div>
+                `;
 
             // aggiungo il markup alla variabile ad ogni iterazione
             gallery += markup;
@@ -33,4 +45,5 @@ fetch("http://127.0.0.1:3001/posts")
         // aggiorno la DOM
         ulEl.innerHTML = gallery;
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
+
