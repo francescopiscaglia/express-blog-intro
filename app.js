@@ -3,8 +3,6 @@
 Esercizio
 
 
-La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
-Configuriamo gli asset statici sull’applicazione in modo che si possano visualizzare le immagini associate ad ogni post.
 Testare nel browser.
 
 */
@@ -18,6 +16,8 @@ const app = express();
 const host = "http://127.0.0.1";
 const port = 3001;
 
+// Configuriamo gli asset statici sull’applicazione in modo che si possano visualizzare le immagini associate ad ogni post.
+app.use(express.static("public"));
 
 // start the server
 app.listen(port, () => {
@@ -30,4 +30,5 @@ app.get("/", (req, res) => {
 });
 
 // Creiamo poi una rotta /posts che restituisca un oggetto json con la lista dei post e il conteggio, partendo da un array locale.
-app.get("/posts", postsController.index);
+// La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
+app.get("/posts", postsController);
