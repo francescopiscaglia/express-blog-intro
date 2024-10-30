@@ -10,7 +10,7 @@ const host = "http://127.0.0.1";
 const port = 3001;
 
 // Configuriamo gli asset statici sull’applicazione in modo che si possano visualizzare le immagini associate ad ogni post.
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 
 // start the server
 app.listen(port, () => {
@@ -18,8 +18,7 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-    res.type("html")
-    .send("<h1>Benvenuto nel mio blog!</h1>");
+    res.send("<h1>Benvenuto nel mio blog!</h1>");
 });
 
 // Creiamo poi una rotta /posts che restituisca un oggetto json con la lista dei post e il conteggio, partendo da un array locale.

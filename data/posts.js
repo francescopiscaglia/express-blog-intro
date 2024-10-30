@@ -26,7 +26,7 @@ const posts = [
     {
         title: "Il mio quinto post",
         content: "Lorem lorem lorem lorem",
-        img: "http://127.0.0.1:3001/img/image4.png",
+        img: "http://127.0.0.1:3001/img/image5.png",
         tags: ["lorem", "lorem", "lorem", "lorem"]
     },
 ];
