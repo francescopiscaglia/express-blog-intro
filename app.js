@@ -1,6 +1,5 @@
 // importazione
 const postsController = require("./controllers/postsController.js");
-// const markup = require("./public/js/main.js")
 
 // Creiamo il progetto base con una rotta / che ritorna un h1 con scritto Benvenuto nel mio blog!
 const express = require("express");
@@ -25,8 +24,7 @@ app.get("/", (req, res) => {
 // La rotta relativa ai post dovrà chiamare la funzione index() dal controller dedicato ( controllers/posts.js )
 app.get("/posts", postsController);
 
-
 // Creare una nuova rotta con cui stampare la lista in html come ul
 app.get("/gallery", (req, res) => {
-    res.sendFile(path.join(__dirname,"public", "html", "list.html"))
+    res.sendFile(path.join(__dirname, "public", "html", "list.html"))
 });
